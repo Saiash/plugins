@@ -1,0 +1,129 @@
+//----------- миксины ----------
+.border-radius (@radiusString: 5px) {
+  border-radius: @radiusString;
+  -webkit-border-radius: @radiusString; 
+  -moz-border-radius: @radiusString;
+}
+.columns (@num, @space, @size) {
+  -webkit-column-width: @size;
+  -moz-column-width: @size;
+  column-width: @size;
+  -webkit-column-count: @num;
+  -moz-column-count: @num;
+  column-count: @num;
+  -webkit-column-gap: @space;
+  -moz-column-gap: @space;
+  column-gap: @space;
+} // расположения текста столбиками
+.shadow (@shadowString: inset 0 -3px 5px 0 rgba(0, 0, 0, 0.3)) {
+  -webkit-box-shadow: @shadowString;
+  -moz-box-shadow: @shadowString;
+  box-shadow: @shadowString;
+}
+.border-img(@string) {
+  -moz-border-image: @string;
+  -webkit-border-image: @string;
+  -o-border-image: @string;
+  border-image: @string;
+}
+.horizontal-double-gradient(@startColor, @endColor, @startPosition: 0%, @nedPosition: 100%) {
+  background: @startColor; /* Old browsers */
+  background: -moz-linear-gradient(left,  @startColor @startPosition, @endColor @nedPosition); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, right top, color-stop(@startPosition,@startColor), color-stop(@nedPosition,@endColor)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(left,  @startColor @startPosition,@endColor @nedPosition); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(left,  @startColor @startPosition,@endColor @nedPosition); /* Opera 11.10+ */
+  background: -ms-linear-gradient(left,  @startColor @startPosition,@endColor @nedPosition); /* IE10+ */
+  background: linear-gradient(to right,  @startColor @startPosition,@endColor @nedPosition); /* W3C */
+}
+.double-gradient(@startColor, @endColor, @startPosition: 0%, @nedPosition: 100%) {
+  background: @startColor;
+  background: -moz-linear-gradient(top,  @startColor @startPosition, @endColor @nedPosition);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(@startPosition,@startColor), color-stop(@nedPosition,@endColor));
+  background: -webkit-linear-gradient(top,  @startColor @startPosition,@endColor @nedPosition);
+  background: -o-linear-gradient(top,  @startColor @startPosition,@endColor @nedPosition);
+  background: -ms-linear-gradient(top,  @startColor @startPosition,@endColor @nedPosition);
+  background: linear-gradient(to bottom,  @startColor @startPosition,@endColor @nedPosition);
+}
+.triple-gradient(@startColor, @middleColor, @endColor, @startPosition, @middlePosition, @endPosition) {
+  background: @startColor;
+  background: -moz-linear-gradient(top,  @startColor @startPosition, @middleColor @middlePosition, @endColor @endPosition);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(@startPosition,@startColor), color-stop(@middlePosition,@middleColor), color-stop(@endPosition,@endColor));
+  background: -webkit-linear-gradient(top,  @startColor @startPosition,@middleColor @middlePosition,@endColor @endPosition);
+  background: -o-linear-gradient(top,  @startColor @startPosition,@middleColor @middlePosition,@endColor @endPosition);
+  background: -ms-linear-gradient(top,  @startColor @startPosition,@middleColor @middlePosition,@endColor @endPosition);
+  background: linear-gradient(to bottom,  @startColor @startPosition,@middleColor @middlePosition,@endColor @endPosition);
+}
+.transit(@effect: all 0.3s) {
+  -webkit-transition: @effect;
+  -moz-transition: @effect;
+  -ms-transition: @effect;
+  -o-transition: @effect;
+  transition: @effect;
+}
+.transform(@effect) {
+  -ms-transform: @effect;
+  -webkit-transform: @effect;
+  -o-transform: @effect;
+  -moz-transform: @effect;
+  transform: @effect;
+}
+.animation (@name) {
+  -webkit-animation: @name;
+  -moz-animation: @name;
+  -ms-animation: @name;
+  -o-animation: @name;
+  animation: @name;
+}
+.press(@background, @text) {
+  background-color: darken(@background,5%);
+  .shadow(inset 0px 0px 20px 5px @background);
+  color: darken(@text,5%);
+} // WTF?
+.opacity (@opacity) {
+  @opacityPercentage: @opacity * 100;
+  opacity: @opacity;
+  -webkit-opacity:  @opacity;
+  -moz-opacity:     @opacity;
+  -ms-filter: ~"progid:DXImageTransform.Microsoft.Alpha(opacity=(@{opacityPercentage}))";
+  filter: ~"alpha(opacity = (@{opacityPercentage}))";
+}
+.clearfix() {
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+.flex() {
+  display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;      /* TWEENER - IE 10 */
+  display: -webkit-flex;     /* NEW - Chrome */
+  display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
+}
+.flex_c() {
+    .flex();
+  justify-content: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+     -moz-justify-content: center;
+      -ms-justify-content: center;
+}
+.flex_sa() {
+    .flex();
+  justify-content: space-around;
+  -ms-flex-pack: space-around;
+  -webkit-justify-content: space-around;
+     -moz-justify-content: space-around;
+      -ms-justify-content: space-around;
+}
+.calc(@prop; @val) {
+  @{prop}: calc(~'@{val}');
+  @{prop}: -moz-calc(~'@{val}');
+  @{prop}: -webkit-calc(~'@{val}');
+  @{prop}: -o-calc(~'@{val}');
+}
+//----------- /миксины ----------
